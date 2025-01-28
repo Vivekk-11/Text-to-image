@@ -6,6 +6,8 @@ import { IoSend } from "react-icons/io5";
 export const TextInput = () => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
+    // TODO: Submit text, and generate an image
   };
 
   return (

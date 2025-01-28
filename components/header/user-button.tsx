@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaHistory } from "react-icons/fa";
-import { CiStar, CiLogout } from "react-icons/ci";
+import { CiStar } from "react-icons/ci";
 import Link from "next/link";
 
 const links = [
@@ -37,11 +37,6 @@ export const UserButton = () => {
     };
   }, []);
 
-  const handleLogOut = (event: FormEvent) => {
-    event.preventDefault();
-    // TODO: Handle Logout
-  };
-
   return (
     <div className="relative" ref={triggerRef}>
       <button onClick={() => setIsClicked((prev) => !prev)}>
@@ -68,14 +63,6 @@ export const UserButton = () => {
               <item.icon />
             </Link>
           ))}
-          <Link
-            onClick={handleLogOut}
-            href="/"
-            className="w-full flex items-center justify-between"
-          >
-            <span>Logout</span>
-            <CiLogout />
-          </Link>
         </div>
       )}
     </div>
