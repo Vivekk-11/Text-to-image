@@ -19,13 +19,11 @@ export const ImageCard = ({ imageData }: Props) => {
         if (!related || !e.currentTarget.contains(related)) setIsHovered(false);
       }}
       onMouseDown={() => setIsHovered(true)}
-      className={`relative cursor-pointer w-full h-[350px] ${
-        isHovered ? "" : ""
-      }`}
+      className={`relative cursor-pointer w-full h-[350px]`}
     >
       <div
         style={{ transition: "all 500ms" }}
-        className={`absolute left-0 top-0 w-full h-full bg-black/60 ${
+        className={`absolute left-0 top-0 w-full h-full bg-black/70 ${
           isHovered ? "opacity-80" : "opacity-0"
         }`}
       />
