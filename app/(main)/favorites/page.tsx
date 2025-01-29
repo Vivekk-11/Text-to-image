@@ -2,7 +2,7 @@ import { ImageCardContainer } from "@/components/image-card-container";
 import { DATA } from "@/lib/utils";
 import React from "react";
 
-const HistoryPage = () => {
+const FavoritesPage = () => {
   return (
     <main>
       <ImageCardContainer images={DATA} />
@@ -10,4 +10,4 @@ const HistoryPage = () => {
   );
 };
 
-export default HistoryPage;
+export default FavoritesPage;

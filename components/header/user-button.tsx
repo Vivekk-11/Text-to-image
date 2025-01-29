@@ -55,6 +55,7 @@ export const UserButton = () => {
         >
           {links.map((item) => (
             <Link
+              onClick={() => setIsClicked(false)}
               key={item.text}
               href={item.link}
               className="w-full flex items-center justify-between"
