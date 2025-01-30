@@ -44,3 +44,73 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.infinite-rotate {
+  animation: infinite buttonRotate 2s linear;
+}
+
+@keyframes buttonRotate {
+  0% {
+    transform: rotate(30deg);
+  }
+  5% {
+    transform: rotate(60deg);
+  }
+  10% {
+    transform: rotate(90deg);
+  }
+  15% {
+    transform: rotate(120deg);
+  }
+  20% {
+    transform: rotate(150deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  30% {
+    transform: rotate(210deg);
+  }
+  35% {
+    transform: rotate(240deg);
+  }
+  40% {
+    transform: rotate(270deg);
+  }
+  45% {
+    transform: rotate(300deg);
+  }
+  50% {
+    transform: rotate(330deg);
+  }
+  55% {
+    transform: rotate(360deg);
+  }
+  60% {
+    transform: rotate(390deg);
+  }
+  65% {
+    transform: rotate(420deg);
+  }
+  70% {
+    transform: rotate(450deg);
+  }
+  75% {
+    transform: rotate(480deg);
+  }
+  80% {
+    transform: rotate(510deg);
+  }
+  85% {
+    transform: rotate(540deg);
+  }
+  90% {
+    transform: rotate(570deg);
+  }
+  95% {
+    transform: rotate(600deg);
+  }
+  100% {
+    transform: rotate(630deg);
+  }
+}
