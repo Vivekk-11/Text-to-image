@@ -1,5 +1,6 @@
 export interface ImageDataType {
+  id: string;
   prompt: string;
   image: string;
-  favorite: boolean;
+  isFavorite: boolean;
 }

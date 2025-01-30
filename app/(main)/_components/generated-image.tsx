@@ -1,5 +1,6 @@
 "use client";
 
+import { MainText } from "@/components/main-text";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useUpdateGenerateImage } from "@/store";
 import Image from "next/image";
@@ -10,18 +11,20 @@ export const GeneratedImage = () => {
   );
 
   return (
-    <div className="w-[450px] h-[450px] rounded-xl overflow-hidden absolute left-[25%]">
+    <div className="rounded-xl overflow-hidden absolute left-[25%]">
       {isLoading ? (
-        <Skeleton className="w-full h-full" />
+        <Skeleton className="w-[450px] h-[450px]" />
       ) : generatedImage.image ? (
         <Image
           width={1000}
           height={1000}
-          className="w-full h-full object-cover"
+          className="w-[450px] h-[450px] object-cover"
           alt="Generated Image"
           src={generatedImage.image}
         />
-      ) : null}
+      ) : (
+        <MainText>Generate image with ComfyGenerate!</MainText>
+      )}
     </div>
   );
 };

@@ -43,3 +43,12 @@ export const DATA = [
     favorite: false,
   },
 ];
+
+export const getHistoryData = () => {
+  if (window !== undefined) {
+    const stored = localStorage.getItem("generatedImages");
+    const images = stored ? JSON.parse(stored) : null;
+    return images;
+  }
+  return null;
+};
