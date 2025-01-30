@@ -1,5 +1,6 @@
 "use client";
 
+import { useUpdateImages } from "@/store/images";
 import { ImageDataType } from "@/types";
 import Image from "next/image";
 import { useState } from "react";
@@ -11,12 +12,10 @@ interface Props {
 
 export const ImageCard = ({ imageData }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { updateFavoriteImage } = useUpdateImages((state) => state);
 
   const handleFavorite = () => {
-    setIsFavorite((prev) => !prev);
-
-    // TODO: Handle Favorite
+    updateFavoriteImage(imageData.id);
   };
 
   return (
@@ -43,7 +42,7 @@ export const ImageCard = ({ imageData }: Props) => {
           isHovered ? "opacity-80" : "opacity-0"
         }`}
       >
-        {isFavorite ? (
+        {imageData.isFavorite ? (
           <MdFavorite size={30} color="white" />
         ) : (
           <MdFavoriteBorder size={30} color="white" />

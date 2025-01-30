@@ -5,50 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const DATA = [
-  {
-    image:
-      "https://res.cloudinary.com/dz3tveb47/image/upload/v1738148116/Other_wygj3t.jpg",
-    prompt: "Airport",
-    favorite: false,
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dz3tveb47/image/upload/v1737715217/bombay-belvedere-living-room_sllwah.webp",
-    prompt: "A very Good place with good background",
-    favorite: false,
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dz3tveb47/image/upload/v1738148116/Other_wygj3t.jpg",
-    prompt: "Airport",
-    favorite: false,
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dz3tveb47/image/upload/v1737715217/bombay-belvedere-living-room_sllwah.webp",
-    prompt: "A very Good place with good background",
-    favorite: false,
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dz3tveb47/image/upload/v1738148116/Other_wygj3t.jpg",
-    prompt: "Airport",
-    favorite: false,
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dz3tveb47/image/upload/v1737715217/bombay-belvedere-living-room_sllwah.webp",
-    prompt: "A very Good place with good background",
-    favorite: false,
-  },
-];
-
 export const getHistoryData = () => {
   if (window !== undefined) {
     const stored = localStorage.getItem("generatedImages");
-    const images = stored ? JSON.parse(stored) : null;
+    const images = stored ? JSON.parse(stored) : [];
     return images;
   }
-  return null;
+  return [];
 };

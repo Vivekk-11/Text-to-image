@@ -1,11 +1,10 @@
-import { ImageCardContainer } from "@/components/image-card-container";
-import { DATA } from "@/lib/utils";
 import React from "react";
+import { MainContainer } from "./_components/main-container";
 
 const FavoritesPage = () => {
   return (
     <main>
-      <ImageCardContainer images={DATA} />
+      <MainContainer />
     </main>
   );
 };

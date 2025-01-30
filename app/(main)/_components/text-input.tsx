@@ -1,6 +1,6 @@
 "use client";
 
-import { useUpdateGenerateImage } from "@/store";
+import { useUpdateGenerateImage } from "@/store/generate-image";
 import { FormEvent, useEffect, useState, useTransition } from "react";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";

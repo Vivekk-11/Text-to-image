@@ -7,26 +7,28 @@ import Link from "next/link";
 import { useEffect } from "react";
 
 export const MainContainer = () => {
-  const { allImages, updateAllImages } = useUpdateImages((state) => state);
+  const { favoriteImages, updateFavoriteImages } = useUpdateImages(
+    (state) => state
+  );
 
   useEffect(() => {
-    updateAllImages();
-  }, [updateAllImages]);
+    updateFavoriteImages();
+  }, [updateFavoriteImages]);
 
   return (
     <>
-      {allImages.length === 0 ? (
+      {favoriteImages.length === 0 ? (
         <div className="h-full w-full flex flex-col items-center justify-center">
-          <MainText>You have not generated any images!</MainText>
+          <MainText>You don&apos;t have favorite images!</MainText>
           <Link
-            href="/"
+            href="/history"
             className="mt-3 bg-slate-200 py-3 px-5 rounded-xl hover:bg-slate-100"
           >
-            Generate it here
+            Favorite images
           </Link>
         </div>
       ) : (
-        <ImageCardContainer images={allImages} />
+        <ImageCardContainer images={favoriteImages} />
       )}
     </>
   );

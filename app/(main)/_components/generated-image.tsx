@@ -2,7 +2,7 @@
 
 import { MainText } from "@/components/main-text";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useUpdateGenerateImage } from "@/store";
+import { useUpdateGenerateImage } from "@/store/generate-image";
 import Image from "next/image";
 
 export const GeneratedImage = () => {
