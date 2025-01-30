@@ -1,17 +1,34 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { IoSend } from "react-icons/io5";
 
 export const TextInput = () => {
   const [text, setText] = useState("");
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
-    console.log(text);
     setText("");
-    // TODO: Submit text, and generate an image
+
+    const res = await fetch("http://localhost:3000/api/generate-image", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: text,
+      }),
+    });
+
+    const response = await res.json();
+
+    if (!res.ok) {
+      toast.error(response.message);
+      return;
+    }
+
+    // TODO: ADD the generated image to zustand
   };
 
   return (
