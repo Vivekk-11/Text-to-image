@@ -2,7 +2,6 @@ import cloudinary from "cloudinary";
 import { NextRequest, NextResponse } from "next/server";
 import { getRunId } from "@/actions/get-run-id";
 import { uploadImage } from "@/actions/upload-image";
-import { fetchInterval } from "@/actions/fetch-interval";
 
 export async function POST(req: NextRequest) {
   cloudinary.v2.config({
@@ -15,7 +14,7 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const image = formData.get("image") as File;
-    const BearerToken = process.env.COMFY_API_KEY_2!;
+    const BearerToken = process.env.NEXT_PUBLIC_COMFY_API_KEY_2!;
 
     if (!image)
       return NextResponse.json({
@@ -47,22 +46,7 @@ export async function POST(req: NextRequest) {
         status: 500,
       });
 
-    const fetchedResponse = await fetchInterval({
-      runId,
-      BearerToken,
-    });
-
-    if (!fetchedResponse)
-      return NextResponse.json({
-        message: "Error generating image tags",
-        status: 500,
-      });
-
-    const tags = fetchedResponse.outputs?.[0]?.data?.tags[0]
-      .split(", ")
-      .filter((item: string) => item);
-
-    return NextResponse.json({ tags, image: input_image });
+    return NextResponse.json({ runId, image: input_image });
   } catch (error) {
     console.log("ERROR", error);
     return NextResponse.json({

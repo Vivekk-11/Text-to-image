@@ -1,3 +1,4 @@
+import { fetchInterval } from "@/lib/fetch-interval";
 import { useUpdateGenerateResponse } from "@/store/generate-response";
 import { useEffect, useTransition } from "react";
 import toast from "react-hot-toast";
@@ -51,11 +52,27 @@ export const UploadImage = () => {
           return;
         }
 
+        const runId = response.runId;
+
+        const fetchedResponse = await fetchInterval({
+          runId,
+          BearerToken: process.env.NEXT_PUBLIC_COMFY_API_KEY_2!,
+        });
+
+        if (!fetchedResponse) {
+          toast.error("Something went wrong, please try again");
+          return;
+        }
+
+        const tags = fetchedResponse.outputs?.[0]?.data?.tags[0]
+          .split(", ")
+          .filter((item: string) => item);
+
         toast.success("Generated image tags successfully");
 
         updateGeneratedResponse({
+          tags,
           image: response.image,
-          tags: response.tags,
           prompt: "",
         });
       } catch (error) {
