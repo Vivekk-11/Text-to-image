@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       .split(", ")
       .filter((item: string) => item);
 
-    return NextResponse.json({ tags });
+    return NextResponse.json({ tags, image: input_image });
   } catch (error) {
     console.log("ERROR", error);
     return NextResponse.json({

@@ -3,4 +3,5 @@ export interface ImageDataType {
   prompt: string;
   image: string;
   isFavorite: boolean;
+  tags: string[];
 }

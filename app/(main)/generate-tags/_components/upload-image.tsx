@@ -51,7 +51,7 @@ export const UploadImage = () => {
         toast.success("Generated image tags successfully");
 
         updateGeneratedResponse({
-          image,
+          image: response.image,
           tags: response.tags,
           prompt: "",
         });
