@@ -19,15 +19,18 @@ export const TextInput = () => {
     if (isPending) return;
 
     startTransition(async () => {
-      const res = await fetch("http://localhost:3000/api/generate-image", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt: text,
-        }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/generate-image`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt: text,
+          }),
+        }
+      );
 
       const response = await res.json();
 

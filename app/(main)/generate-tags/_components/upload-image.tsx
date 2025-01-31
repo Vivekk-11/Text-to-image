@@ -37,10 +37,13 @@ export const UploadImage = () => {
         const formData = new FormData();
         formData.append("image", file);
 
-        const res = await fetch("http://localhost:3000/api/generate-tags", {
-          method: "POST",
-          body: formData,
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/generate-tags`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         const response = await res.json();
         if (!res.ok) {
