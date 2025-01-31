@@ -2,11 +2,11 @@
 
 import { MainText } from "@/components/main-text";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useUpdateGenerateImage } from "@/store/generate-image";
+import { useUpdateGenerateResponse } from "@/store/generate-response";
 import Image from "next/image";
 
 export const GeneratedImage = () => {
-  const { isLoading, generatedImage } = useUpdateGenerateImage(
+  const { isLoading, generatedResponse } = useUpdateGenerateResponse(
     (state) => state
   );
 
@@ -14,13 +14,13 @@ export const GeneratedImage = () => {
     <div className="rounded-xl overflow-hidden absolute left-[25%]">
       {isLoading ? (
         <Skeleton className="w-[450px] h-[450px]" />
-      ) : generatedImage.image ? (
+      ) : generatedResponse.image ? (
         <Image
           width={1000}
           height={1000}
           className="w-[450px] h-[450px] object-cover"
           alt="Generated Image"
-          src={generatedImage.image}
+          src={generatedResponse.image}
         />
       ) : (
         <MainText>Generate image with ComfyGenerate!</MainText>

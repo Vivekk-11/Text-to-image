@@ -58,7 +58,9 @@ export async function POST(req: NextRequest) {
         status: 500,
       });
 
-    const tags = fetchedResponse.outputs?.[0]?.data?.tags[0].split(", ");
+    const tags = fetchedResponse.outputs?.[0]?.data?.tags[0]
+      .split(", ")
+      .filter((item: string) => item);
 
     return NextResponse.json({ tags });
   } catch (error) {

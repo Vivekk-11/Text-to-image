@@ -1,6 +1,6 @@
 "use client";
 
-import { useUpdateGenerateImage } from "@/store/generate-image";
+import { useUpdateGenerateResponse } from "@/store/generate-response";
 import { FormEvent, useEffect, useState, useTransition } from "react";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
@@ -9,9 +9,8 @@ import { IoSend } from "react-icons/io5";
 export const TextInput = () => {
   const [text, setText] = useState("");
   const [isPending, startTransition] = useTransition();
-  const { updateGeneratedImage, updateIsLoading } = useUpdateGenerateImage(
-    (state) => state
-  );
+  const { updateGeneratedResponse, updateIsLoading } =
+    useUpdateGenerateResponse((state) => state);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -38,7 +37,11 @@ export const TextInput = () => {
       }
 
       toast.success("Generated image successfully");
-      updateGeneratedImage({ image: response.image, prompt: text });
+      updateGeneratedResponse({
+        image: response.image,
+        prompt: text,
+        tags: [],
+      });
     });
   };
 

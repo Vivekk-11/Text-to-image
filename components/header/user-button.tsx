@@ -5,10 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { FaHistory } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import Link from "next/link";
+import { RiAiGenerate } from "react-icons/ri";
 
 const links = [
   { text: "History", link: "/history", icon: FaHistory },
   { text: "Favorites", link: "/favorites", icon: CiStar },
+  { text: "Generate Tags", link: "/generate-tags", icon: RiAiGenerate },
 ];
 
 export const UserButton = () => {
@@ -20,7 +22,6 @@ export const UserButton = () => {
     function handleClickOutside(event: MouseEvent) {
       const target = event.target as Node;
 
-      // Check if click is outside both trigger and dropdown content
       if (
         triggerRef.current &&
         !triggerRef.current.contains(target) &&
@@ -51,7 +52,7 @@ export const UserButton = () => {
       {isClicked && (
         <div
           ref={dropdownRef}
-          className="bg-slate-100 z-50 p-2 w-[125px] flex flex-col items-start justify-start gap-y-2 absolute right-0 top-100"
+          className="bg-slate-100 z-50 p-2 w-[175px] flex flex-col items-start justify-start gap-y-2 absolute right-0 top-100"
         >
           {links.map((item) => (
             <Link
