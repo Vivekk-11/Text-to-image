@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchInterval } from "@/actions/fetch-interval";
+import { fetchInterval } from "@/lib/fetch-interval";
 import { useUpdateGenerateResponse } from "@/store/generate-response";
 import { FormEvent, useEffect, useState, useTransition } from "react";
 import toast from "react-hot-toast";
