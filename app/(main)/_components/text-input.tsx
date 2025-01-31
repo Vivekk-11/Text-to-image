@@ -1,5 +1,6 @@
 "use client";
 
+import { fetchInterval } from "@/actions/fetch-interval";
 import { useUpdateGenerateResponse } from "@/store/generate-response";
 import { FormEvent, useEffect, useState, useTransition } from "react";
 import toast from "react-hot-toast";
@@ -39,9 +40,23 @@ export const TextInput = () => {
         return;
       }
 
+      const runId = response.runId;
+
+      const fetchedResponse = await fetchInterval({
+        BearerToken: process.env.NEXT_PUBLIC_COMFY_API_KEY!,
+        runId,
+      });
+
+      if (!fetchedResponse) {
+        toast.error("Something went wrong, please try again");
+        return;
+      }
+
+      const image = fetchedResponse.outputs?.[0]?.data?.images?.[0]?.url;
+
       toast.success("Generated image successfully");
       updateGeneratedResponse({
-        image: response.image,
+        image,
         prompt: text,
         tags: [],
       });
